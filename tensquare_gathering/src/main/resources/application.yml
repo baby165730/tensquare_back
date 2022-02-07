@@ -5,7 +5,7 @@ spring:
     name: tensquare-gathering #指定服务名
   datasource:  
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://172.19.241.100:3306/tensquare_gathering?characterEncoding=UTF8
+    url: jdbc:mysql://localhost:3306/tensquare_gathering?characterEncoding=UTF8
     username: root
     password: Root123@
   jpa: 
@@ -15,7 +15,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://172.17.0.2:10086/eureka
+      defaultZone: http://127.0.0.1:10086/eureka
   instance:
     lease-renewal-interval-in-seconds: 5 # 每隔5秒发送一次心跳
     lease-expiration-duration-in-seconds: 10 # 10秒不发送就过期

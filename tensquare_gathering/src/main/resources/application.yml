@@ -5,7 +5,7 @@ spring:
     name: tensquare-gathering #指定服务名
   datasource:  
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://172.19.241.100:3306/tensquare_gathering?characterEncoding=UTF8
+    url: jdbc:mysql://172.19.241.61:3306/tensquare_gathering?characterEncoding=UTF8
     username: root
     password: Root123@
   jpa: 

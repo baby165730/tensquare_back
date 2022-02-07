@@ -10,7 +10,7 @@ spring:
 eureka:
   client:
     service-url:  
-      defaultZone: http://localhost:10086/eureka  # Eureka访问地址
+      defaultZone: http://172.19.241.99:10088/eureka  # Eureka访问地址
   instance:
     prefer-ip-address: true
   

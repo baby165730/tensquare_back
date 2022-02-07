@@ -28,6 +28,6 @@ node {
         //编译，安装公共工程
         sh "mvn -f tensquare_common clean install"
         //编译，构建本地镜像
-        sh "mvn -f ${project_name} clean package"
+        sh "mvn -f ${project_name} clean package dockerfile:build"
     }
 }

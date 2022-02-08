@@ -38,7 +38,7 @@ zuul:
       serviceId: tensquare-admin-service
     gathering:
       path: /gathering/**
-      erviceId: tensquare-gathering
+      serviceId: tensquare-gathering
 
  # jwt参数
 jwt:

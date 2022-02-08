@@ -7,7 +7,7 @@ def harbor_url = "172.19.240.221:85"
 //Harbor的项目名称
 def harbor_project_name = "tensquare"
 //Harbor的凭证
-def harbor_auth = "5a3152e2-684f-41d1-9022-5290bdd5b516"
+def harbor_auth = "4082e1ea-aca0-4041-a304-04fd7d1b0eb8"
 
 node {
     stage('拉取源代码') {

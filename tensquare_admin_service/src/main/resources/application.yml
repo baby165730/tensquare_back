@@ -5,7 +5,7 @@ spring:
     name: tensquare-admin-service #指定服务名
   datasource:  
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://172.19.241.61:3306/tensquare_user?characterEncoding=UTF8
+    url: jdbc:mysql://192.168.174.100:3306/tensquare_user?characterEncoding=UTF8
     username: root
     password: Root123@
   jpa: 

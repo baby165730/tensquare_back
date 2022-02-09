@@ -10,16 +10,27 @@ def harbor_project_name = "tensquare"
 def harbor_auth = "4082e1ea-aca0-4041-a304-04fd7d1b0eb8"
 
 node {
+    // 接受选择的微服务，切分成数组
+    def selectedProjects = "${project_name}".split(",")
+
     stage('拉取源代码') {
         checkout([$class: 'GitSCM', branches: [[name: "*/${branch}"]], extensions: [], userRemoteConfigs: [[credentialsId: "${git_auth}", url: 'git@github.com:endeavor66/tensquare_back.git']]])
     }
     stage('代码审查') {
         def scannerHome = tool 'sonarqube-scanner'
         withSonarQubeEnv('sonarqube') {
-            sh """
-            cd ${project_name}
-            ${scannerHome}/bin/sonar-scanner
-            """
+            // 遍历微服务数组，依次执行sonarqube
+            for(int i = 0; i < selectedProjects.size(); i++){
+                // selectedProjects[i]的格式为 "微服务名@端口"
+                def currentProjectName = selectedProjects[i].split("@")[0];
+                def currentProjectPort = selectedProjects[i].split("@")[1];
+
+                // 执行sonarqube
+                sh """
+                    cd ${currentProjectName}
+                    ${scannerHome}/bin/sonar-scanner
+                """
+            }
         }
     }
     stage('编译，构建镜像') {
@@ -27,6 +38,9 @@ node {
         def imageName = "${project_name}:${tag}"
         //编译，安装公共工程
         sh "mvn -f tensquare_common clean install"
+
+
+
         //编译，构建本地镜像
         sh "mvn -f ${project_name} clean package dockerfile:build"
         //给镜像打标签
